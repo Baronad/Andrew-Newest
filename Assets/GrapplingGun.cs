@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour
 {
+
+// linerenderer = linjen som blir när jag skjuter 
+// Asignat linjen till en joint 
+
     private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
@@ -14,6 +18,8 @@ public class GrapplingGun : MonoBehaviour
         lr = GetComponent<LineRenderer>();
     }
 
+
+//vid knapptryck så startar eller stoppar grapplen
 
     void Update()
     {
@@ -28,6 +34,9 @@ public class GrapplingGun : MonoBehaviour
         }
     }
 
+
+// om raycast hit eller om linjen träffar någonting så får karaktären en hit.point som sedan gör så att karaktären svingas fram 
+// i detta exemplet är allting som är assignat till ground grappleble
 
     void StartGrapple()
     {
@@ -44,6 +53,8 @@ public class GrapplingGun : MonoBehaviour
 
             joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
+            
+            // linjens värden 
 
             joint.spring = 4.5f;
             joint.damper = 7f;
@@ -58,6 +69,8 @@ public class GrapplingGun : MonoBehaviour
         lr.positionCount = 0;
         Destroy(joint);
     }
+    
+    // ritar linjen i änden av vapnet 
 
 
     void DrawRope()
