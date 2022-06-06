@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GrapplingRope : MonoBehaviour
 {
+
+// wavecount = hur många vågor som linjen som vapnet skjuter ut ska ha 
+// även adderat en animation, animationcurve
+
+
     private Spring spring;
     private LineRenderer lr;
     public GrapplingGun grapplingGun;
@@ -16,6 +21,8 @@ public class GrapplingRope : MonoBehaviour
     public float waveHeigth;
     public AnimationCurve affectCurve;
 
+    // väcker själva jointen av linjen 
+
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -27,6 +34,9 @@ public class GrapplingRope : MonoBehaviour
     {
         DrawRope();
     }
+
+// lr = linerenderer 
+// om linjen förstörs av antingen att trycka igen eller av andra omständigheter såsom till exempel buggar 
 
     void DrawRope()
     {
@@ -51,6 +61,8 @@ public class GrapplingRope : MonoBehaviour
         spring.SetStrength(strength);
         spring.Update(Time.deltaTime);
 
+// quaternion = rotation, i detta fallet av vapnet och gubben då vi ser lookrotation((grapplepoint - guntipposition)
+
         var grapplePoint = grapplingGun.GetGrapplePoint();
         var gunTipPosition = grapplingGun.gunTip.position;
         var up = Quaternion.LookRotation((grapplePoint - gunTipPosition).normalized) * Vector3.up;
@@ -58,7 +70,8 @@ public class GrapplingRope : MonoBehaviour
 
 
         currentGrapplePosition = Vector3.Lerp(a: currentGrapplePosition, grapplePoint, Time.deltaTime * 12f);
-
+        
+        // beräknat kurvorna på linjerna (vågorna) 
 
         for (var i = 0; i < quality + 1; i++)
         {
