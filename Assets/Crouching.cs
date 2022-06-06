@@ -1,7 +1,12 @@
 CapsuleCollider playerCol;
+
+// sätter höjden på objektet i samband med cylinderns höjd i spelet
+
 float originalHeight = 3.8f;
 public float reducedHeigh = 1.9f;
 
+
+// assignar playerCol så att programmet förstår den 
 
 void Start()
 {
@@ -11,6 +16,7 @@ void Start()
 
 
 
+// halverar höjden på cylindern 
 
 void Crouch()
 {
@@ -21,6 +27,8 @@ void GoUp()
 {
     playerCol.height = originalHeight;
 }
+
+// säger till programmet att när man trycker på leftkontroll så crouchar man 
 
 void Update()
 {
