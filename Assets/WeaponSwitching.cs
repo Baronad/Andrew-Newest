@@ -11,7 +11,7 @@ public class WeaponSwitching : MonoBehaviour
         SelectWeapon();
     }
 
-    // Update is called once per frame
+    // gjort så att man kan scrolla baklänges mellan vapnena genom ayy sätta if (input.getaxis("mouse scrollwheel) 
     void Update()
     {
         int previousSelectedWeapon = selectedWeapon;
@@ -24,13 +24,8 @@ public class WeaponSwitching : MonoBehaviour
                 selectedWeapon++;
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            if (selectedWeapon <= 0)
-                selectedWeapon = transform.childCount - 1;
-            else
-                selectedWeapon--;
-        }
+    // gjort så att man kan scrolla framlänges mellan vapnena genom ayy sätta if (input.getaxis("mouse scrollwheel) 
+
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
@@ -40,6 +35,16 @@ public class WeaponSwitching : MonoBehaviour
                 selectedWeapon--;
         }
 
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            if (selectedWeapon <= 0)
+                selectedWeapon = transform.childCount - 1;
+            else
+                selectedWeapon--;
+        }
+
+
+// eftersom att nummer på tangentbordet blir keycode så blir till exempel 1 Keycode.alpa1 detsamma med 2 och 3 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             selectedWeapon = 0;
