@@ -12,6 +12,9 @@ public class CameraChange: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+// här har jag satt så att om jag trycker 1 kommer jag in i firstperson, vice versa med thirdperson och 0 
+
         if (Input.GetButtonDown("Camera"))
         {
             if (CamMode == 1 )
@@ -21,10 +24,17 @@ public class CameraChange: MonoBehaviour
         else { 
                 CamMode += 1;
             }
+            
+            // En coroutine är tillåter dig att kunna executa olika uppgifter över olika ramar
+            
             StartCoroutine (CamChange());
         }
 
     }
+    
+     // om kameran är defualt så betyder det 1 
+    // om kameran är sekundär / thirdperso så är kameran 0 
+    
     IEnumerator CamChange()
     {
         yield return new WaitForSeconds(0.01f);
