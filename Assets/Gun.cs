@@ -2,15 +2,24 @@
 using System.Collections;
 public class Gun : MonoBehaviour
 {
+
+//assignat hur mycket damage pistolen kommer att göra 
+//samt hur mycket föremålet ska röra på sig
+
     public float damage = 10f;
     public float range = 100f;
     public float fireRate = 15f;
     public float impactForce = 30f;
 
+// assignat hur mycket ammo pistolen ska ha 
+// hade jag skrivit "private int currentammo; auto" så hade det varit oändligt med skott
+
     public int maxAmmo = 10;
     private int currentAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
+    
+   // assignat kameran till fpscam, även tagit med partikelsystem som jag använder när vi snackar om impacteffect
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
